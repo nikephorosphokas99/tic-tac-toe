@@ -1,6 +1,6 @@
 """Browser visualizer for the tic-tac-toe / XOXO MCTS agents.
 
-    python visualizer.py [port]     ->  http://127.0.0.1:8000
+    python inference/visualizer.py [port]     ->  http://127.0.0.1:8000
 
 Standard library + numpy only. The game logic lives in game.py and the page in
 page.html; build_pages.py packages the same files for GitHub Pages (Pyodide).
@@ -10,9 +10,11 @@ import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+HERE = Path(__file__).parent
+sys.path.insert(0, str(HERE.parent))  # api.py and mcts_agent*.py live at the repo root
+
 import game
 
-HERE = Path(__file__).parent
 STATIC = {
     "/": ("page.html", "text/html; charset=utf-8"),
     "/transport.js": ("transport_http.js", "text/javascript; charset=utf-8"),

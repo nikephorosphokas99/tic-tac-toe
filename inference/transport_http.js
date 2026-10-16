@@ -1,4 +1,4 @@
-// Transport for the local server (python visualizer.py): talk to it over HTTP.
+// Transport for the local server (python inference/visualizer.py): talk to it over HTTP.
 window.LIMITS = {size: 8, iterations: 20000};
 
 async function call(path, body) {
